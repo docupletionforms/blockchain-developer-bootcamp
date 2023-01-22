@@ -62,7 +62,6 @@ describe('Token', ()=> {
   		    expect (await token.balanceOf(deployer.address)).to.equal(tokens(999900))
   		    expect (await token.balanceOf(receiver.address)).to.equal(amount)
   		})
-  		// ...
   		it('emits a transfer event', async () => {
   		  const event = result.events[0]
   		  expect(event.event).to.equal('Transfer')
@@ -166,6 +165,7 @@ describe('Token', ()=> {
 		const invalidAmount = tokens(100000000)
 		await expect(token.connect(exchange).transferFrom(deployer.address, receiver.address, invalidAmount)).to.be.reverted
 	})
+
     })
 
   })
