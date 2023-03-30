@@ -49,7 +49,7 @@ async function main() {
   // user1 approves 10,000 DAPP...
   transaction = await DAPP.connect(user1).approve(exchange.address, amount)
   await transaction.wait()
-  console.log(`Approved ${amount} tokens from ${user1.address}\n`)
+  console.log(`Approved ${amount} tokens from ${user1.address}`)
 
   // user1 deposits 10,000 DAPP
   transaction = await exchange.connect(user1).depositToken(DAPP.address, amount)
@@ -59,7 +59,7 @@ async function main() {
   // user2 approves 10,000 mETH
   transaction = await mETH.connect(user2).approve(exchange.address, amount)
   await transaction.wait()
-  console.log(`Approved ${amount} tokens from ${user2.address}\n`)
+  console.log(`Approved ${amount} tokens from ${user2.address}`)
 
   // user2 deposits 10,000 mETH
   transaction = await exchange.connect(user2).depositToken(mETH.address, amount)
@@ -74,7 +74,7 @@ async function main() {
   let orderId
   transaction = await exchange.connect(user1).makeOrder(mETH.address, tokens(100), DAPP.address, tokens(5))
   result = await transaction.wait()
-  console.log(`Made order from ${user1.address}\n`)
+  console.log(`Made order from ${user1.address}`)
 
   // User 1 cancels order
   orderId = result.events[0].args.id

@@ -7,11 +7,13 @@ import {
   loadNetwork,
   loadAccount,
   loadTokens,
-  loadExchange
+  loadExchange,
+  subscribeToEvents
 } from '../store/interactions';
 
 import Navbar from './Navbar'
 import Markets from './Markets'
+import Balance from './Balance'
 
 function App() {
   const dispatch = useDispatch()
@@ -21,7 +23,7 @@ function App() {
     // Connect Ethers to blockchain
     const provider = loadProvider(dispatch)
     
-    // Fetch current network's chainId (e.g. hardhat: 31337, kovan: 42)
+    // Fetch current network's chainId (e.g. hardhat: 31337, goerli: 5)
     const chainId = await loadNetwork(provider, dispatch)
 
     // Reload page when network changes
@@ -42,7 +44,8 @@ function App() {
     // Load exchange smart contract
     const exchangeConfig = config[chainId].exchange
     const exchange = await loadExchange(provider, exchangeConfig.address, dispatch)
-    console.log(exchange.address)
+    // Listen to events
+    subscribeToEvents(exchange, dispatch)
   }
 
   useEffect(() => {
@@ -59,7 +62,7 @@ function App() {
 
       <Markets />
 
-          {/* Balance */}
+      <Balance />
 
           {/* Order */}
 
