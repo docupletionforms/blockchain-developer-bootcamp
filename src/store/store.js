@@ -8,7 +8,7 @@ import { provider, tokens, exchange } from './reducers'
 const reducer = combineReducers({
   provider,
   tokens,
-  exchange 	
+  exchange
 })
 
 const initialState = {}
@@ -17,4 +17,4 @@ const middleware = [thunk]
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
 
-export default store;
+export default store

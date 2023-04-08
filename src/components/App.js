@@ -19,11 +19,10 @@ function App() {
   const dispatch = useDispatch()
 
   const loadBlockchainData = async () => {
-
     // Connect Ethers to blockchain
     const provider = loadProvider(dispatch)
-    
-    // Fetch current network's chainId (e.g. hardhat: 31337, goerli: 5)
+
+    // Fetch current network's chainId (e.g. hardhat: 31337, kovan: 42)
     const chainId = await loadNetwork(provider, dispatch)
 
     // Reload page when network changes
@@ -36,14 +35,15 @@ function App() {
       loadAccount(provider, dispatch)
     })
 
-    // Load token smart contract
-    const DAPP = config[chainId].DAPP
+    // Load token smart contracts
+    const DApp = config[chainId].DApp
     const mETH = config[chainId].mETH
-    await loadTokens(provider, [DAPP.address, mETH.address], dispatch)
+    await loadTokens(provider, [DApp.address, mETH.address], dispatch)
 
     // Load exchange smart contract
     const exchangeConfig = config[chainId].exchange
     const exchange = await loadExchange(provider, exchangeConfig.address, dispatch)
+
     // Listen to events
     subscribeToEvents(exchange, dispatch)
   }
@@ -60,9 +60,9 @@ function App() {
       <main className='exchange grid'>
         <section className='exchange__section--left grid'>
 
-      <Markets />
+          <Markets />
 
-      <Balance />
+          <Balance />
 
           {/* Order */}
 
