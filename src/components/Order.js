@@ -79,7 +79,7 @@ const Order = () => {
             type="text" 
             id='price' 
             placeholder='0.0000' 
-            value={amount === 0 ? '' : amount} 
+            value={amount === 0 ? '' : price} 
             onChange={(e) => setPrice(e.target.value)} 
         />
 
