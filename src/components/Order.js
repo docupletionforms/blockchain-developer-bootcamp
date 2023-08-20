@@ -61,12 +61,12 @@ const Order = () => {
           <label htmlFor="amount">Sell Amount</label>
         )}
 
-        <input 
-            type="text" 
-            id='amount' 
+        <input
+            type="text"
+            id='amount'
             placeholder='0.0000'
-            value={amount === 0 ? '' : amount} 
-            onChange={(e) => setAmount(e.target.value)} 
+            value={amount === 0 ? '' : amount}
+            onChange={(e) => setAmount(e.target.value)}
         />
 
         {isBuy ? (
@@ -75,12 +75,12 @@ const Order = () => {
           <label htmlFor="price">Sell Price</label>
         )}
 
-        <input 
-            type="text" 
-            id='price' 
-            placeholder='0.0000' 
-            value={amount === 0 ? '' : price} 
-            onChange={(e) => setPrice(e.target.value)} 
+        <input
+            type="text"
+            id='price'
+            placeholder='0.0000'
+            value={price === 0 ? '' : price}
+            onChange={(e) => setPrice(e.target.value)}
         />
 
         <button className='button button--filled' type='submit'>

@@ -20,7 +20,7 @@ import PriceChart from './PriceChart'
 import Transactions from './Transactions'
 import Trades from './Trades'
 import OrderBook from './OrderBook'
-
+import Alert from './Alert'
 
 function App() {
   const dispatch = useDispatch()
@@ -43,9 +43,9 @@ function App() {
     })
 
     // Load token smart contracts
-    const DAPP = config[chainId].DAPP
+    const DApp = config[chainId].DAPP
     const mETH = config[chainId].mETH
-    await loadTokens(provider, [DAPP.address, mETH.address], dispatch)
+    await loadTokens(provider, [DApp.address, mETH.address], dispatch)
 
     // Load exchange smart contract
     const exchangeConfig = config[chainId].exchange
@@ -90,7 +90,7 @@ function App() {
         </section>
       </main>
 
-      {/* Alert */}
+      <Alert />
 
     </div>
   );

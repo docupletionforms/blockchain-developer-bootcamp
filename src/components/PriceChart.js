@@ -9,7 +9,7 @@ import { options, defaultSeries } from './PriceChart.config';
 
 import { priceChartSelector } from '../store/selectors';
 
-import Banner from './Banner.js';
+import Banner from './Banner';
 
 const PriceChart = () => {
   const account = useSelector(state => state.provider.account)
@@ -25,16 +25,19 @@ const PriceChart = () => {
 
           {priceChart && (
 
-          <div className='flex'>
+            <div className='flex'>
 
-          {priceChart.lastPriceChange === '+' ? (
-          <img src={arrowUp} alt="Arrow up" />
-          ): (
-          <img src={arrowDown} alt="Arrow down" />
+              {priceChart.lastPriceChange === '+' ? (
+                <img src={arrowUp} alt="Arrow up" />
+              ): (
+                <img src={arrowDown} alt="Arrow down" />
+              )}
+
+              <span className='up'>{priceChart.lastPrice}</span>
+            </div>
+
           )}
-            <span className='up'>{priceChart.lastPrice}</span>
-          </div>
-          )}
+
         </div>
       </div>
 
